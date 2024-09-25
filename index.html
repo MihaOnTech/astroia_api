@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta Astral Interactiva</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    svg {
+      width: 80%;
+      max-width: 800px;
+      height: auto;
+      border: 1px solid black;
+      margin: 20px auto;
+    }
+    .planet {
+      fill: red;
+      cursor: pointer;
+    }
+    .house {
+      stroke: black;
+      stroke-width: 1;
+    }
+    .cardinal {
+      stroke: red;
+      stroke-width: 2;
+    }
+    .sign {
+      font-size: 12px;
+      fill: black;
+    }
+    .sign-line {
+      stroke: black;
+      stroke-width: 0.5;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Carta Astral Interactiva</h1>
+  <p>Haz clic en los planetas o signos para ver detalles.</p>
+  <div id="chart-container">
+    <!-- Aquí se insertará el SVG con la carta astral -->
+  </div>
+
+  <div id="info" style="margin-top: 20px;"></div>
+
+  <script>
+    const signos = ["Aries", "Tauro", "Géminis", "Cáncer", "Leo", "Virgo", "Libra", "Escorpio", "Sagitario", "Capricornio", "Acuario", "Piscis"];
+    
+    // Función para obtener los datos de la API (simulamos aquí con datos locales por ahora)
+    async function getChartData() {
+      const response = await fetch('http://127.0.0.1:5000/natal_chart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "date": "22/01/91",
+          "time": "23:30",
+          "location": "Sabadell"
+        })
+      });
+
+      const data = await response.json();
+      return data;
+    }
+
+    // Función para ajustar los ángulos según el offset de la Casa 1
+    function adjustAngle(angle, offset) {
+      let adjustedAngle = offset - angle + 180;
+      if (adjustedAngle < 0) {
+        adjustedAngle += 360;
+      }
+      return adjustedAngle;
+    }
+
+    // Función para dibujar la carta astral
+    function drawChart(chartData) {
+      const container = document.getElementById('chart-container');
+      const svgNS = "http://www.w3.org/2000/svg";  // Namespace SVG
+
+      const svg = document.createElementNS(svgNS, "svg");
+      svg.setAttribute("viewBox", "0 0 500 500");
+
+      // Extraemos el offset de la Casa 1
+      const offset = chartData.houses[0].find(house => house.Casa === "House 1").Posicion;
+
+      // Dibujar el círculo principal
+      const circle = document.createElementNS(svgNS, "circle");
+      circle.setAttribute("cx", 250);
+      circle.setAttribute("cy", 250);
+      circle.setAttribute("r", 180);
+      circle.setAttribute("stroke", "black");
+      circle.setAttribute("fill", "none");
+      svg.appendChild(circle);
+
+      // Dibujar el círculo para los signos
+      const signCircle = document.createElementNS(svgNS, "circle");
+      signCircle.setAttribute("cx", 250);
+      signCircle.setAttribute("cy", 250);
+      signCircle.setAttribute("r", 220);
+      signCircle.setAttribute("stroke", "black");
+      signCircle.setAttribute("fill", "none");
+      svg.appendChild(signCircle);
+
+      // Dibujar los radios de los signos (cada 30 grados)
+      for (let i = 0; i < 12; i++) {
+        const angle = adjustAngle(i * 30, offset) * Math.PI / 180;  // Cada signo ocupa 30 grados
+        const x1 = 250 + 180 * Math.cos(angle);
+        const y1 = 250 + 180 * Math.sin(angle);
+        const x2 = 250 + 220 * Math.cos(angle);
+        const y2 = 250 + 220 * Math.sin(angle);
+
+        const line = document.createElementNS(svgNS, "line");
+        line.setAttribute("x1", x1);
+        line.setAttribute("y1", y1);
+        line.setAttribute("x2", x2);
+        line.setAttribute("y2", y2);
+        line.setAttribute("class", "sign-line");
+        svg.appendChild(line);
+      }
+
+      // Dibujar las casas (del círculo externo hacia afuera)
+      chartData.houses[0].forEach(house => {
+        const angle = adjustAngle(house.Posicion, offset) * Math.PI / 180;
+        const x1 = 250 + 220 * Math.cos(angle);
+        const y1 = 250 + 220 * Math.sin(angle);
+        const x2 = 250 + 250 * Math.cos(angle);  // Líneas hacia fuera del círculo
+        const y2 = 250 + 250 * Math.sin(angle);
+
+        const line = document.createElementNS(svgNS, "line");
+        line.setAttribute("x1", x1);
+        line.setAttribute("y1", y1);
+        line.setAttribute("x2", x2);
+        line.setAttribute("y2", y2);
+
+        // Marcar casas cardinales (1, 4, 7, 10) en rojo
+        if (["House 1", "House 4", "House 7", "House 10"].includes(house.Casa)) {
+          line.setAttribute("class", "cardinal");
+        } else {
+          line.setAttribute("class", "house");
+        }
+
+        svg.appendChild(line);
+      });
+
+      // Dibujar los signos del zodiaco
+      for (let i = 0; i < signos.length; i++) {
+        const angle = adjustAngle(i * 30, offset) * Math.PI / 180;  // Cada signo ocupa 30 grados
+        const x = 250 + 230 * Math.cos(angle);
+        const y = 250 + 230 * Math.sin(angle);
+
+        const text = document.createElementNS(svgNS, "text");
+        text.setAttribute("x", x - 10);
+        text.setAttribute("y", y + 5);
+        text.setAttribute("class", "sign");
+        text.textContent = signos[i];
+        svg.appendChild(text);
+      }
+
+      // Dibujar los planetas
+      chartData.planets.forEach(planet => {
+        const angle = adjustAngle(planet.Posicion, offset) * Math.PI / 180;
+        const x = 250 + 150 * Math.cos(angle);
+        const y = 250 + 150 * Math.sin(angle);
+
+        const planetCircle = document.createElementNS(svgNS, "circle");
+        planetCircle.setAttribute("cx", x);
+        planetCircle.setAttribute("cy", y);
+        planetCircle.setAttribute("r", 10);
+        planetCircle.setAttribute("class", "planet");
+        planetCircle.setAttribute("data-planet", planet.Planeta);
+        planetCircle.addEventListener("click", () => showInfo(planet));
+        svg.appendChild(planetCircle);
+      });
+
+      // Agregar el SVG al contenedor
+      container.innerHTML = '';
+      container.appendChild(svg);
+    }
+
+    // Función para mostrar información sobre el planeta
+    function showInfo(planet) {
+      const info = document.getElementById('info');
+      info.innerHTML = `<h3>${planet.Planeta}</h3>
+                        <p>Posición: ${planet.Posicion.toFixed(2)}° ${planet.Signo}</p>
+                        <p>Retrogrado: ${planet.Retrogrado}</p>`;
+    }
+
+    // Obtener los datos y dibujar la carta
+    getChartData().then(data => drawChart(data));
+
+  </script>
+</body>
+</html>
