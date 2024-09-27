@@ -89,7 +89,7 @@ def generate_openai_response():
         })
         return result
     except Exception as e:
-        print(f"Error al generar respuesta de OpenAI: {str(e)})
+        print(f"Error al generar respuesta de OpenAI: {str(e)}")
         return f"Error al generar respuesta de OpenAI: {str(e)}"
 
 if __name__ == '__main__':
