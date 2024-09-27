@@ -25,7 +25,7 @@ def natal_chart_endpoint():
     planets = chart.get_planet_positions().to_dict(orient='records')
     houses = chart.get_house_positions().to_dict(orient='records'),
     aspects = chart.get_aspect_matrix().to_dict(orient='records'),
-    return jsonify({
+    response = jsonify({
         'nombre': data['name'],
         'date': data['date'], 
         'time': data['time'], 
@@ -33,6 +33,8 @@ def natal_chart_endpoint():
         'planets': planets,
         'houses': houses
     })
+    print(response)
+    return response
     
 
 @app.route("/ia/planeta-signo-casa", methods=['POST'])
@@ -87,6 +89,7 @@ def generate_openai_response():
         })
         return result
     except Exception as e:
+        print(f"Error al generar respuesta de OpenAI: {str(e)})
         return f"Error al generar respuesta de OpenAI: {str(e)}"
 
 if __name__ == '__main__':

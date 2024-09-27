@@ -32,7 +32,6 @@ def get_house_cusps(input_date, longitude, latitude):
         cusp_positions.append([f"House {i}", sign, degrees, cusp_degree])
 
     cusps_df = pd.DataFrame(cusp_positions, columns=['Casa', 'Signo', 'Grados','Posicion'])
-    print(cusps_df)
     return cusps_df
    
 def aspects_calc(planet_positions_df, house_positions_df):
