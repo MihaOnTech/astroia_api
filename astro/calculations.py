@@ -4,6 +4,25 @@ from . import utils as utl
 import numpy as np
 from . import constants as ct
 
+ORBS = {
+    'Conjuncion': 10,
+    'Oposicion': 8,
+    'Trigono': 8,
+    'Cuadratura': 8,
+    'Sextil': 6,
+#    'Quincuncio': 6
+}
+
+# Aspectos por ángulo
+ASPECTS_ANGLES = {
+    'Conjuncion': 0,
+    'Oposicion': 180,
+    'Trigono': 120,
+    'Cuadratura': 90,
+    'Sextil': 60,
+ #   'Quincuncio': 150
+}
+
 def get_planets_pos(input_date, longitude, latitude):
     # Set the geoposition for topocentric calculations
     swe.set_topo(lon=longitude, lat=latitude)
@@ -34,25 +53,34 @@ def get_house_cusps(input_date, longitude, latitude):
     cusps_df = pd.DataFrame(cusp_positions, columns=['Casa', 'Signo', 'Grados','Posicion'])
     return cusps_df
    
-def aspects_calc(planet_positions_df, house_positions_df):
-    # Crear un DataFrame para guardar las diferencias
-    aspect_matrix = pd.DataFrame("", index=planet_positions_df['Planeta'], columns=planet_positions_df['Planeta'])
-
-    # Calcular las diferencias de posición
+def calculate_aspects(planet_positions_df):
+    aspects_list = []
+    
+    # Iterar sobre los planetas para calcular los aspectos entre ellos
     for i in range(len(planet_positions_df)):
-        aspect_matrix.loc[planet_positions_df['Planeta'][i], planet_positions_df['Planeta'][i]] = 'X'
-        for j in range(i+1, len(planet_positions_df)):
+        for j in range(i + 1, len(planet_positions_df)):
+            planet1 = planet_positions_df.iloc[i]
+            planet2 = planet_positions_df.iloc[j]
+            
             # Calcular la diferencia circular mínima
-            diff = abs(planet_positions_df['Posicion'][i] - planet_positions_df['Posicion'][j])
+            diff = abs(planet1['Posicion'] - planet2['Posicion'])
             if diff > 180:
                 diff = 360 - diff
-            # Asignar la diferencia al DataFrame en ambas direcciones
-            aspect_matrix.loc[planet_positions_df['Planeta'][i], planet_positions_df['Planeta'][j]] = 'X'
-            aspect_matrix.loc[planet_positions_df['Planeta'][j], planet_positions_df['Planeta'][i]] = diff
+            
+            # Buscar si el ángulo está cerca de algún aspecto conocido
+            for aspect_name, aspect_angle in ASPECTS_ANGLES.items():
+                if abs(diff - aspect_angle) <= ORBS[aspect_name]:
+                    aspects_list.append({
+                        'Planeta 1': planet1['Planeta'],
+                        'Planeta 2': planet2['Planeta'],
+                        'Aspecto': aspect_name,
+                        'Angulo': diff
+                    })
+
+    # Convertir a DataFrame para mejor visualización
     
-    aspect_matrix.iloc[0:, 0:] = aspect_matrix.iloc[0:, 0:].map(lambda x: utl.encontrar_aspecto(x) if isinstance(x, (int, float)) else x)
-    aspect_matrix = aspect_matrix.fillna('-')
-    #print(aspect_matrix)
-    return aspect_matrix
+    aspects_df = pd.DataFrame(aspects_list)
+    print(aspects_df)
+    return aspects_df
     
 

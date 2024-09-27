@@ -5,9 +5,7 @@ from waitress import serve
 from openai import OpenAI
 import os 
 
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
-)
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
  
 app = Flask(__name__, template_folder='templates')
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -31,7 +29,8 @@ def natal_chart_endpoint():
         'time': data['time'], 
         'location': data['location'],
         'planets': planets,
-        'houses': houses
+        'houses': houses,
+        'aspects': aspects
     })
     print({
         'nombre': data['name'],
@@ -39,7 +38,8 @@ def natal_chart_endpoint():
         'time': data['time'], 
         'location': data['location'],
         'planets': planets,
-        'houses': houses
+        'houses': houses,
+        'aspects': aspects
     })
     return response
     

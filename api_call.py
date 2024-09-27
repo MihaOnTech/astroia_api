@@ -7,9 +7,10 @@ url = 'http://127.0.0.1:5000/natal_chart'
 
 # Data to be sent in JSON format
 data = {
-    "date": "22/01/91",
-    "time": "23:30",
-    "location": "Sabadell, España"
+    "name": "Mike",
+    "date": "05/02/93",
+    "time": "03:30",
+    "location": "Zaragoza, España"
 }
 # Convert data dictionary to JSON
 json_data = json.dumps(data)

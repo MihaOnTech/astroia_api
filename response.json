@@ -1,0 +1,321 @@
+{
+    "aspects": [
+        [
+            {
+                "Angulo": 153.6576239983553,
+                "Aspecto": "Quincuncio",
+                "Planeta 1": "Sun",
+                "Planeta 2": "Moon"
+            },
+            {
+                "Angulo": 9.106980750918467,
+                "Aspecto": "Conjuncion",
+                "Planeta 1": "Sun",
+                "Planeta 2": "Mercury"
+            },
+            {
+                "Angulo": 121.68905488367875,
+                "Aspecto": "Trigono",
+                "Planeta 1": "Sun",
+                "Planeta 2": "Jupiter"
+            },
+            {
+                "Angulo": 4.07648894786405,
+                "Aspecto": "Conjuncion",
+                "Planeta 1": "Sun",
+                "Planeta 2": "Saturn"
+            },
+            {
+                "Angulo": 57.737112301779064,
+                "Aspecto": "Sextil",
+                "Planeta 1": "Sun",
+                "Planeta 2": "Node"
+            },
+            {
+                "Angulo": 144.55064324743682,
+                "Aspecto": "Quincuncio",
+                "Planeta 1": "Moon",
+                "Planeta 2": "Mercury"
+            },
+            {
+                "Angulo": 84.65332111796597,
+                "Aspecto": "Cuadratura",
+                "Planeta 1": "Moon",
+                "Planeta 2": "Jupiter"
+            },
+            {
+                "Angulo": 149.58113505049124,
+                "Aspecto": "Quincuncio",
+                "Planeta 1": "Moon",
+                "Planeta 2": "Saturn"
+            },
+            {
+                "Angulo": 179.75182166565264,
+                "Aspecto": "Oposicion",
+                "Planeta 1": "Moon",
+                "Planeta 2": "Uranus"
+            },
+            {
+                "Angulo": 179.6962059225997,
+                "Aspecto": "Oposicion",
+                "Planeta 1": "Moon",
+                "Planeta 2": "Neptune"
+            },
+            {
+                "Angulo": 125.42293027958128,
+                "Aspecto": "Trigono",
+                "Planeta 1": "Moon",
+                "Planeta 2": "Pluto"
+            },
+            {
+                "Angulo": 148.60526369986565,
+                "Aspecto": "Quincuncio",
+                "Planeta 1": "Moon",
+                "Planeta 2": "Node"
+            },
+            {
+                "Angulo": 5.030491803054417,
+                "Aspecto": "Conjuncion",
+                "Planeta 1": "Mercury",
+                "Planeta 2": "Saturn"
+            },
+            {
+                "Angulo": 90.02642647298191,
+                "Aspecto": "Cuadratura",
+                "Planeta 1": "Mercury",
+                "Planeta 2": "Pluto"
+            },
+            {
+                "Angulo": 97.07759234856086,
+                "Aspecto": "Cuadratura",
+                "Planeta 1": "Venus",
+                "Planeta 2": "Mars"
+            },
+            {
+                "Angulo": 126.88411361348827,
+                "Aspecto": "Trigono",
+                "Planeta 1": "Venus",
+                "Planeta 2": "Pluto"
+            },
+            {
+                "Angulo": 95.26868487633558,
+                "Aspecto": "Cuadratura",
+                "Planeta 1": "Mars",
+                "Planeta 2": "Jupiter"
+            },
+            {
+                "Angulo": 125.7655438315428,
+                "Aspecto": "Trigono",
+                "Planeta 1": "Jupiter",
+                "Planeta 2": "Saturn"
+            },
+            {
+                "Angulo": 95.09850054768668,
+                "Aspecto": "Cuadratura",
+                "Planeta 1": "Jupiter",
+                "Planeta 2": "Uranus"
+            },
+            {
+                "Angulo": 95.04288480463373,
+                "Aspecto": "Cuadratura",
+                "Planeta 1": "Jupiter",
+                "Planeta 2": "Neptune"
+            },
+            {
+                "Angulo": 63.95194258189969,
+                "Aspecto": "Sextil",
+                "Planeta 1": "Jupiter",
+                "Planeta 2": "Node"
+            },
+            {
+                "Angulo": 84.9959346699275,
+                "Aspecto": "Cuadratura",
+                "Planeta 1": "Saturn",
+                "Planeta 2": "Pluto"
+            },
+            {
+                "Angulo": 61.81360124964311,
+                "Aspecto": "Sextil",
+                "Planeta 1": "Saturn",
+                "Planeta 2": "Node"
+            },
+            {
+                "Angulo": 0.0556157430529538,
+                "Aspecto": "Conjuncion",
+                "Planeta 1": "Uranus",
+                "Planeta 2": "Neptune"
+            },
+            {
+                "Angulo": 54.328891386071376,
+                "Aspecto": "Sextil",
+                "Planeta 1": "Uranus",
+                "Planeta 2": "Pluto"
+            },
+            {
+                "Angulo": 54.27327564301842,
+                "Aspecto": "Sextil",
+                "Planeta 1": "Neptune",
+                "Planeta 2": "Pluto"
+            }
+        ]
+    ],
+    "date": "05/02/93",
+    "houses": [
+        [
+            {
+                "Casa": "House 1",
+                "Grados": 3.971404226118125,
+                "Posicion": 243.97140422611812,
+                "Signo": "Sagitario"
+            },
+            {
+                "Casa": "House 2",
+                "Grados": 6.307371476029573,
+                "Posicion": 276.3073714760296,
+                "Signo": "Capricornio"
+            },
+            {
+                "Casa": "House 3",
+                "Grados": 14.306152100895133,
+                "Posicion": 314.30615210089513,
+                "Signo": "Acuario"
+            },
+            {
+                "Casa": "House 4",
+                "Grados": 21.157735673924662,
+                "Posicion": 351.15773567392466,
+                "Signo": "Piscis"
+            },
+            {
+                "Casa": "House 5",
+                "Grados": 21.021179035618445,
+                "Posicion": 21.021179035618445,
+                "Signo": "Aries"
+            },
+            {
+                "Casa": "House 6",
+                "Grados": 14.38454390422919,
+                "Posicion": 44.38454390422919,
+                "Signo": "Tauro"
+            },
+            {
+                "Casa": "House 7",
+                "Grados": 3.971404226118125,
+                "Posicion": 63.971404226118125,
+                "Signo": "Geminis"
+            },
+            {
+                "Casa": "House 8",
+                "Grados": 6.307371476029573,
+                "Posicion": 96.30737147602957,
+                "Signo": "Cancer"
+            },
+            {
+                "Casa": "House 9",
+                "Grados": 14.306152100895133,
+                "Posicion": 134.30615210089513,
+                "Signo": "Leo"
+            },
+            {
+                "Casa": "House 10",
+                "Grados": 21.157735673924662,
+                "Posicion": 171.15773567392466,
+                "Signo": "Virgo"
+            },
+            {
+                "Casa": "House 11",
+                "Grados": 21.021179035618445,
+                "Posicion": 201.02117903561845,
+                "Signo": "Libra"
+            },
+            {
+                "Casa": "House 12",
+                "Grados": 14.384543904229162,
+                "Posicion": 224.38454390422916,
+                "Signo": "Escorpio"
+            }
+        ]
+    ],
+    "location": "Zaragoza, España",
+    "nombre": "Mike",
+    "planets": [
+        {
+            "Grados_Signo": 16.304187295696693,
+            "Planeta": "Sun",
+            "Posicion": 316.3041872956967,
+            "Retrogrado": "Direct",
+            "Signo": "Acuario"
+        },
+        {
+            "Grados_Signo": 19.96181129405197,
+            "Planeta": "Moon",
+            "Posicion": 109.96181129405197,
+            "Retrogrado": "Direct",
+            "Signo": "Cancer"
+        },
+        {
+            "Grados_Signo": 25.41116804661516,
+            "Planeta": "Mercury",
+            "Posicion": 325.41116804661516,
+            "Retrogrado": "Direct",
+            "Signo": "Acuario"
+        },
+        {
+            "Grados_Signo": 2.2688551871215092,
+            "Planeta": "Venus",
+            "Posicion": 2.2688551871215092,
+            "Retrogrado": "Direct",
+            "Signo": "Aries"
+        },
+        {
+            "Grados_Signo": 9.346447535682358,
+            "Planeta": "Mars",
+            "Posicion": 99.34644753568236,
+            "Retrogrado": "Retrograde",
+            "Signo": "Cancer"
+        },
+        {
+            "Grados_Signo": 14.615132412017942,
+            "Planeta": "Jupiter",
+            "Posicion": 194.61513241201794,
+            "Retrogrado": "Retrograde",
+            "Signo": "Libra"
+        },
+        {
+            "Grados_Signo": 20.380676243560742,
+            "Planeta": "Saturn",
+            "Posicion": 320.38067624356074,
+            "Retrogrado": "Direct",
+            "Signo": "Acuario"
+        },
+        {
+            "Grados_Signo": 19.713632959704626,
+            "Planeta": "Uranus",
+            "Posicion": 289.7136329597046,
+            "Retrogrado": "Direct",
+            "Signo": "Capricornio"
+        },
+        {
+            "Grados_Signo": 19.658017216651672,
+            "Planeta": "Neptune",
+            "Posicion": 289.6580172166517,
+            "Retrogrado": "Direct",
+            "Signo": "Capricornio"
+        },
+        {
+            "Grados_Signo": 25.38474157363325,
+            "Planeta": "Pluto",
+            "Posicion": 235.38474157363325,
+            "Retrogrado": "Direct",
+            "Signo": "Escorpio"
+        },
+        {
+            "Grados_Signo": 18.56707499391763,
+            "Planeta": "Node",
+            "Posicion": 258.56707499391763,
+            "Retrogrado": "Retrograde",
+            "Signo": "Sagitario"
+        }
+    ],
+    "time": "03:30"
+}

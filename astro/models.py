@@ -15,8 +15,8 @@ class NatalChart:
         self.timezone = None
         self.longitude = None
         self.latitude = None
-        self.planets_pos = None
-        self.houses_pos = None
+        self.planet_positions = None
+        self.house_positions = None
         self.aspects_matrix = None
 
     def calculate_all(self):
@@ -25,7 +25,7 @@ class NatalChart:
         # Calculate positions
         self.planet_positions = calc.get_planets_pos(input_date, self.longitude, self.latitude)
         self.house_positions = calc.get_house_cusps(input_date, self.longitude, self.latitude)
-        self.aspect_matrix = calc.aspects_calc(self.planet_positions, self.house_positions)
+        self.aspect_matrix = calc.calculate_aspects(self.planet_positions)
 
     def parseInputDateTime(self, date, time, location):
         ## Input Format
