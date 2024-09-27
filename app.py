@@ -33,7 +33,14 @@ def natal_chart_endpoint():
         'planets': planets,
         'houses': houses
     })
-    print(response)
+    print({
+        'nombre': data['name'],
+        'date': data['date'], 
+        'time': data['time'], 
+        'location': data['location'],
+        'planets': planets,
+        'houses': houses
+    })
     return response
     
 
